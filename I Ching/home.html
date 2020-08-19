@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>I Ching</title>
+        <link href="main.css" rel="stylesheet" type="text/css">
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
+    </head>
+
+    <body>
+        <div class="buttons" >
+            <button onclick="hexagramGenerator()" >Consult</button>
+            <button onclick="clearSurface()" >Clear</button>
+        </div>
+        
+        <div id="book" ></div>
+        <div class="flexBoxRow" >
+            <div class="flexBoxCol" >
+                <div id="line6" ></div>
+                <div id="line5" ></div>
+                <div id="line4" ></div>
+                <div id="line3" ></div>
+                <div id="line2" ></div>
+                <div id="line1" ></div>
+            </div>
+    
+            <div class="flexBoxCol" >
+                <div id="line12" ></div>
+                <div id="line11" ></div>
+                <div id="line10" ></div>
+                <div id="line9" ></div>
+                <div id="line8" ></div>
+                <div id="line7" ></div>
+            </div>
+        </div>
+        
+        
+        <script>
+            let change = false;
+            function hexagramGenerator(){
+                console.log("hexagramGenerator")
+                document.getElementById("book").innerHTML =  Math.ceil(Math.random() * 724 ) + " , " +  Math.ceil(Math.random() * 35 )
+                document.getElementById("line1").innerHTML = lineGenerator((addends(false) + addends(true) + addends(true)),"line7");
+                document.getElementById("line2").innerHTML = lineGenerator((addends(false) + addends(true) + addends(true)),"line8");
+                document.getElementById("line3").innerHTML = lineGenerator((addends(false) + addends(true) + addends(true)),"line9")
+                document.getElementById("line4").innerHTML = lineGenerator((addends(false) + addends(true) + addends(true)),"line10");
+                document.getElementById("line5").innerHTML = lineGenerator((addends(false) + addends(true) + addends(true)),"line11");
+                document.getElementById("line6").innerHTML = lineGenerator((addends(false) + addends(true) + addends(true)),"line12");
+            }
+
+            function addends(val){
+                console.log("addends")
+                let number = Math.ceil( Math.random() * 49)
+                console.log("number is: ",number)
+                if(number % 4 === 0){
+                    return 2
+                }
+                else if(val === true && number % 4 === 3){
+                    return 2
+                }
+                else return 3
+
+            }
+
+            function lineGenerator(val, id ){
+                console.log("lineGenerator");
+                switch(val){
+                    case 9:
+                        if(id){
+                            document.getElementById(id).innerHTML = lineGenerator(8, false)
+                        }
+                        return "_________o";
+
+                    case 8:
+                        if(id){
+                            document.getElementById(id).innerHTML = lineGenerator(8, false)
+                        }
+                        return "____ ____";
+                    
+                    case 7:
+                        if(id){
+                            document.getElementById(id).innerHTML = lineGenerator(7, false)
+                        }
+                        return "_________";
+
+                    case 6:
+                        if(id){
+                            document.getElementById(id).innerHTML = lineGenerator(7, false)
+                        }
+                        return "____ ____x"
+                }
+            }
+            function clearSurface(){
+                    console.log("i was clicked")
+                    document.getElementById("book").innerHTML = "";
+                    document.getElementById("line1").innerHTML = "";
+                    document.getElementById("line2").innerHTML = "";
+                    document.getElementById("line3").innerHTML = "";
+                    document.getElementById("line4").innerHTML = "";
+                    document.getElementById("line5").innerHTML = "";
+                    document.getElementById("line6").innerHTML = "";
+                    document.getElementById("line7").innerHTML = "";
+                    document.getElementById("line8").innerHTML = "";
+                    document.getElementById("line9").innerHTML = "";
+                    document.getElementById("line10").innerHTML = "";
+                    document.getElementById("line11").innerHTML = "";
+                    document.getElementById("line12").innerHTML = "";
+                }
+        </script>
+    </body>
+</html>

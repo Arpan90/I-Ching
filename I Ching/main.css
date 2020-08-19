@@ -1,0 +1,46 @@
+body{
+    /* background-color: #97CBFF;; */
+    background-color: #000000;
+}
+
+button{
+    height: 10vh;
+    width: 10vh;
+    /* margin-left: 30vw; */
+}
+
+button:active{
+    color: #000000;
+    background-color: #ffffff;
+}
+
+.flexBoxCol{
+    display: flex;
+    flex-direction: column;
+    width: 10vw;
+}
+.flexBoxRow{
+    display: flex;
+    flex-direction: row;
+    width: 30vw;
+    margin-left: 40vw;
+    margin-top: 20vh;
+    color: #ffffff;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 10vh;
+    margin-top: 10vh;
+    
+}
+
+#book{
+    height: fit-content;
+    width: fit-content;
+    font-size: 30px;
+    color: #ffffff;
+    margin-left: 15vh;
+}
