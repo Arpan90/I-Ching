@@ -37,9 +37,20 @@
         
         <script>
             let change = false;
+
+            function randomize(val){
+                let d = new Date();
+                let ms = d.getMilliseconds() % 100; //  64 is the length of cached stack produced by first call to Math.random(); current millisecond count is used to produce a random number of values to be popped of that cache.
+                console.log(ms);
+                for(let i = 1; i <= ms; i++ ){ // pop out random number(upto 64) of random numbers cached after the first call to Math.random(); 
+                    Math.random();
+                }
+                return Math.ceil(Math.random() * val );
+            }
+
             function hexagramGenerator(){
                 console.log("hexagramGenerator")
-                document.getElementById("book").innerHTML =  Math.ceil(Math.random() * 724 ) + " , " +  Math.ceil(Math.random() * 35 )
+                document.getElementById("book").innerHTML =  randomize(724) + " , " +  randomize(35);
                 document.getElementById("line1").innerHTML = lineGenerator((addends(false) + addends(true) + addends(true)),"line7");
                 document.getElementById("line2").innerHTML = lineGenerator((addends(false) + addends(true) + addends(true)),"line8");
                 document.getElementById("line3").innerHTML = lineGenerator((addends(false) + addends(true) + addends(true)),"line9")
@@ -50,7 +61,7 @@
 
             function addends(val){
                 console.log("addends")
-                let number = Math.ceil( Math.random() * 49)
+                let number = randomize(49);
                 console.log("number is: ",number)
                 if(number % 4 === 0){
                     return 2
